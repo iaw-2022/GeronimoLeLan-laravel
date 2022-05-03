@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\GamesController;
+use App\Models\Game;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,8 @@ Route::get('/dashboard', function () {
 
 Route::resources([
     'games' => GamesController::class,
+    'categories' => CategoriesController::class,
+    'runs' => RunsController::class,
 ]);
 
 require __DIR__.'/auth.php';
