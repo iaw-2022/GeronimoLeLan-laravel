@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\RunsController;
 use App\Models\Game;
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +25,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resources([
-    'games' => GamesController::class,
-    'categories' => CategoriesController::class,
-    'runs' => RunsController::class,
+    '/games' => GamesController::class,
+    '/categories' => CategoriesController::class,
+    '/runs' => RunsController::class,
 ]);
 
 require __DIR__.'/auth.php';
