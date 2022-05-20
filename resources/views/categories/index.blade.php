@@ -30,6 +30,14 @@
                 <tr>
                   <th scope="row"> {{$category->name}}</th>
                   <td>{{$category->description}}</td>
+                  <td>
+                  <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+          <a href="/categories/{{$category->id}}/edit" class="btn btn-info">Edit</a>         
+              @csrf
+              @method('DELETE')
+          <button type="submit" class="btn btn-danger">Delete</button>
+         </form>
+                </td>
                 </tr>
               @endforeach
             </tbody>
@@ -45,7 +53,7 @@
         <div class="p-6 bg-white border-b border-gray-200">                 
           <div class="form-group row">
             <div>
-              <label for="Category name" class="col-sm-2 col-form-label">Create a new category</label>
+              <h1 for="Category name" class="col-sm-2 col-form-label">Create a new category</h1>
             </div>
             <div class="col-sm-10">
               <input name="name" class="form-control" placeholder="Category name">

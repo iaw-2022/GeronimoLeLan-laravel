@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('runs', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->boolean('validation');
             $table->string('description');
             $table->integer('positive_votes');

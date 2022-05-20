@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Runs;
+use App\Models\Run;
 
 class RunsController extends Controller
 {
     public function index(){
-        return view('runs.index');//, ['games' => Game::all()]);
+        return view('runs.index',['runs' => Run::all()]);
     }
     public function create(){}
     public function store($request){}
