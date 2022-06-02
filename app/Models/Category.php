@@ -13,5 +13,12 @@ class Category extends Model
         'name',
         'description',
     ];
+    public function games(){
+      //  return $this->belongsToMany(Game::class,'game_category');
+      return $this->belongsToMany('App\Models\Game');
+    }
+    public function runs(){
+       return $this->belongsToMany('App\Models\Run');
+   }
 }
 

@@ -30,4 +30,6 @@ Route::resources([
     '/runs' => RunsController::class,
 ]);
 
+Route::post('/runs/validation','App\Http\Controllers\RunsController@validation','$id');
+
 require __DIR__.'/auth.php';

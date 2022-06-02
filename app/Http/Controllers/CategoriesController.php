@@ -16,7 +16,8 @@ class CategoriesController extends Controller
        ]);
        Category::create([
            'name' => $request->name,
-           'description' => $request->description
+           'description' => $request->description,
+           'id_game' =>1
        ]);
        return redirect('/categories');
     }
@@ -34,7 +35,7 @@ class CategoriesController extends Controller
             $category->description='';
         }
         $validated = $request->validate([
-            'name' => 'required|unique:categories,name|max:255',
+            'name' => 'required|unique:categories,name|max:255'.$id,
        ]);
         $category->save();
         return redirect('categories');

@@ -5,6 +5,8 @@
     </h2>
   </x-slot>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <div class="py-12"> 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
               
@@ -21,7 +23,7 @@
                 <th scope="col">Name</th>
                           
                 <th scope="col">Description</th>
-                          
+                <th scope="col">Categories</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -30,6 +32,30 @@
                 <tr>
                   <th scope="row"> {{$game->name}}</th>
                   <td>{{$game->description}}</td>
+                  <td>
+                  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>
+                  </td>
+                  
+              <td>
+               
+                <select class="btn btn-default dropdown-toggle">
+                        @foreach($game->categories as $category)
+                            <option>{{$category->name}}</option>
+                        @endforeach
+                    </select>
+            </div>
+        </div>
+</td>
+
                   <td>
                   <form action="{{ route('games.destroy',$game->id) }}" method="POST">
           <a href="/games/{{$game->id}}/edit" class="btn btn-info">Edit</a>         
@@ -46,6 +72,7 @@
       </div>
     </div>
   </div>
+  <a href="/games/create" class="btn btn-info">create</a>  
   <form action='/games' method="POST">
   @csrf
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
