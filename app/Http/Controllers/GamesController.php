@@ -15,6 +15,7 @@ class GamesController extends Controller
     public function store(Request $request){
         $validated = $request->validate([
             'name' => 'required|unique:games,name|max:255',
+            'categories' => 'required'
        ]);
        $newGame=Game::create([
            'name' => $request->name,
@@ -29,12 +30,6 @@ class GamesController extends Controller
             if($request->has($category->id)){
                 $newGame->categories()->attach($request->categories);
             }}
-     //  }
-       //$categories= $request->cate
-      
-       //sync
-       //return view('games.index',compact('categories'));
-       //return $request->categories;}
        return redirect('/games');
     
     }
@@ -43,7 +38,7 @@ class GamesController extends Controller
     public function edit($id)
     {
          $game = Game::find($id);
-         return view('games.edit',['categories'=>Category::all(),'game'=>$game]);//->with('game',$game);
+         return view('games.edit',['categories'=>Category::all(),'game'=>$game]);
     }
     public function update(Request $request,$id){
         $game = Game::find($id);
@@ -53,24 +48,19 @@ class GamesController extends Controller
             $game->description='';
         }
         $validated = $request->validate([
-            'name' => 'required|unique:games,name|max:255'.$id,
+            'name' => 'required|max:255|unique:games,name,'.$id,
        ]);
 
 
        foreach(Category::all() as $category ){
            $a="";
            if (in_array($category->id,$request->categories)){
-               if(!$game->categories->contains($category))//$game->categories::find($category->id)==$request->categories::find($category->id))
+               if(!$game->categories->contains($category))
                     $game->categories()->attach($category->id);
            }else{
             $game->categories()->detach($category->id);
            }
-       }
-       /*foreach($game->categories as $category ){
-        if(!in_array(   $category,$request->categories)){
-         $game->categories()->detach($category);
-        }*/
-    
+        }    
        $game->save();
        return redirect('games');
     }

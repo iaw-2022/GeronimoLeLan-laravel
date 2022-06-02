@@ -9,7 +9,9 @@ class CategoriesController extends Controller
     public function index(){
         return view('categories.index',  ['categories' => Category::all() ]);
     }
-    public function create(){}
+    public function create(){
+        return view('categories.create');
+    }
     public function store(Request $request){
         $validated = $request->validate([
             'name' => 'required|unique:categories,name|max:255',
@@ -35,7 +37,7 @@ class CategoriesController extends Controller
             $category->description='';
         }
         $validated = $request->validate([
-            'name' => 'required|unique:categories,name|max:255'.$id,
+            'name' => 'required|max:255|unique:categories,name,'.$id,
        ]);
         $category->save();
         return redirect('categories');

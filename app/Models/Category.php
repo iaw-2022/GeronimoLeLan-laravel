@@ -14,7 +14,6 @@ class Category extends Model
         'description',
     ];
     public function games(){
-      //  return $this->belongsToMany(Game::class,'game_category');
       return $this->belongsToMany('App\Models\Game');
     }
     public function runs(){

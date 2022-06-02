@@ -22,8 +22,8 @@ return new class extends Migration
             $table->integer('negative_votes');
             $table->timestamps();
           //  $table->foreign('id_game')->references('id')->on('games')->nullable();
-            $table->foreignId('id_game')->constrained('games');
-            $table->foreignId('id_user')->constrained('users');
+            $table->foreignId('id_game')->constrained('games')->onDelete('cascade');
+            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
              
         });
     }

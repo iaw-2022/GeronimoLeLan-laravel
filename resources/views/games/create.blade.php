@@ -34,9 +34,9 @@
             @endforeach
         </div>
           </div>
-          @if($errors->has('name'))
+          @if($errors->has('name')||$errors->has('categories'))
             <div class="error">{{ $errors->first('name') }}</div>
-            <div class="error">{{ $errors->first('description') }}</div>
+            <div class="error">{{ $errors->first('categories') }}</div>
           @endif
         </div>
       </div>

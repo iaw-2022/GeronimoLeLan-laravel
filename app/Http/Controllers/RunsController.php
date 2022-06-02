@@ -13,9 +13,9 @@ class RunsController extends Controller
     public function create(){}
     public function store(Request $request){
         $validated = $request->validate([
-            'name' => 'required|unique:categories,name|max:255',
+            'name' => 'required|unique:runs,name|max:255',
        ]);
-       Run::create([
+       $newRun=Run::create([
            'name' => $request->name,
            'description' => $request->description,
            'validation' => false,
@@ -25,11 +25,14 @@ class RunsController extends Controller
            'id_user' => $request->id_user
 
        ]);
+       $newRun->categories()->attach(1);
        return redirect('/runs');
     }
     public function show($id){}
     public function edit($id){}
-    public function update($id){}
+    public function update($id)
+    {
+    }
     public function destroy($id){
         Run::destroy($id);
         return redirect('/runs');
