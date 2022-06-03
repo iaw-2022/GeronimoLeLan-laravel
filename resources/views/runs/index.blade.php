@@ -91,34 +91,4 @@
       </div>
     </div>
   </div>
-
-  <!-- ELIMINAR  -->
-  <form action='/runs' method="POST">
-    @csrf
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white border-b border-gray-200">
-          <div class="form-group row">
-            <div>
-              <h1 for="game name" class="col-sm-2 col-form-label">ESTO ES PARA TEST</h1>
-            </div>
-            <div class="col-sm-10">
-              <input name="name" class="form-control" placeholder="run name">
-
-              <input name="description" class="form-control" placeholder="run description">
-
-              <input name="id_game" class="form-control" placeholder="id_game">
-              <input name="id_user" class="form-control" placeholder="id_user">
-            </div>
-          </div>
-          @if($errors->has('name'))
-          <div class="error">{{ $errors->first('name') }}</div>
-          @endif
-          <button type="submit" class="btn btn-primary">Create Run</button>
-        </div>
-      </div>
-    </div>
-  </form>
-  <!-- ELIMINAR    -->
-  </div>
 </x-app-layout>

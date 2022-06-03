@@ -11,23 +11,7 @@ class RunsController extends Controller
         return view('runs.index',['runs' => Run::all()]);
     }
     public function create(){}
-    public function store(Request $request){
-        $validated = $request->validate([
-            'name' => 'required|unique:runs,name|max:255',
-       ]);
-       $newRun=Run::create([
-           'name' => $request->name,
-           'description' => $request->description,
-           'validation' => false,
-           'positive_votes' => 32,
-           'negative_votes' => 4,
-           'id_game' => $request->id_game,
-           'id_user' => $request->id_user
-
-       ]);
-       $newRun->categories()->attach(1);
-       return redirect('/runs');
-    }
+    public function store(Request $request){}
     public function show($id){}
     public function edit($id){}
     public function update($id)
